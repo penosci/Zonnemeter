@@ -12,7 +12,7 @@ void setup()
   size(400,200); 
   printArray(Serial.list()); 
  
-  myPort = new Serial(this, Serial.list()[32], 2400); 
+  myPort = new Serial(this, Serial.list()[33], 2400); 
   myPort.bufferUntil(lf); 
   
 }
