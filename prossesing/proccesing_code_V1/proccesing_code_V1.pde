@@ -31,7 +31,7 @@ void draw(){
 void serialEvent(Serial p) { 
   inString = p.readString(); 
   if (fileOpen==0){
-    String filename = curentDate() + ".csv";
+    String filename = year()+ "-" + month() + "-" + day() + "--" + hour() + "-" + minute() + ".csv";
     output = createWriter(filename);
     fileOpen = 1;
   }
