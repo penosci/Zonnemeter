@@ -1,0 +1,11 @@
+__stringdata: SMALLCONST, 3851 0 18
+_putch: CODE, 4808 0 12
+_dpowers: SMALLCONST, 3841 0 10
+_main: CODE, 3870 0 426
+_myIsr: CODE, 8 0 142
+__initialization: CODE, 4792 0 6
+___lwdiv: CODE, 4604 0 82
+_printf: CODE, 4296 0 308
+___lwmod: CODE, 4686 0 66
+__Analog_Digital_convertor: CODE, 4752 0 40
+Total: 1110
