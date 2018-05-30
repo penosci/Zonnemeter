@@ -1,0 +1,3 @@
+SET FOREIGN_KEY_CHECKS = 0;
+truncate Solar_power ;
+SET FOREIGN_KEY_CHECKS = 1;
