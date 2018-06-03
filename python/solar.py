@@ -35,6 +35,15 @@ while 1:
         try:
             cur.execute("INSERT INTO Solar_power (`value`) VALUES (%s)" % data[0])
             db.commit()
+            cur.execute(
+                """INSERT INTO Solar_power (`value`)
+                SELECT %s, Solar_powerid
+                FROM Solar_power
+                order by Solar_powerID desc
+                LIMIT 1""" % data[0]
+                )
+            db.commit()
+            #    SELECT (%s)" % data[0])
         except:
             db.rollback()
         #print "the value is: %s" % data[0]
