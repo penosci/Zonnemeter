@@ -1,6 +1,7 @@
 <?php
 include("php/sql.php");
-ini_set('error_reporting', E_ALL);
+
+print_r($_POST);
 $power = $_POST['power'];
 $temp = $_POST['temp'];
 ddb_insert_power_and_temp($power,$temp);

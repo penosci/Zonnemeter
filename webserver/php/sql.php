@@ -22,7 +22,7 @@ function ddb_disconect($con) {
 
 function ddb_insert_power_and_temp($power,$temp) {
 	$con = ddb_connect();
-	$power_query= "INSERT INTO Solar_power (`value`) VALUES (`{$power}`)";
+	$power_query= "INSERT INTO Solar_power (`value`) VALUES ({$power})";
 
 	$temp_query= "INSERT INTO Temperature (`value`,Solar_powerid)
 								SELECT {$temp}, Solar_powerid
