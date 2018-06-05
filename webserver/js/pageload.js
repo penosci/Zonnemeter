@@ -3,14 +3,22 @@ $(document).ready(function(){
   $(".site_content").load('php/dashboard.php');
 
   $(".dashboard_link").click(function(){
-    current_page
+    current_page = "dashboard";
     $(".site_content").load('php/dashboard.php');
 
   });
-  window.setInterval(reload_dash, 10000);
+  $(".week_graph_link").click(function(){
+    current_page = "week_graph";
+    $(".site_content").load('php/week_graph.php');
+
+  });
+  window.setInterval(reload_dash(current_page), 10000);
 });
 
-function reload_dash() {
+function reload_dash(current_page) {
   $(".site_content").load('php/dashboard.php');
-  console.log("dash reload");
+  if(current_page = "dashboard") {
+    console.log("dash reload");
+  }
+
 }
