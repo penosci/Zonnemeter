@@ -45,6 +45,26 @@ function ddb_insert_power_and_temp($power,$temp) {
 	ddb_disconect($con);
 }
 
+function ddb_select_last_records(){
+	$con = ddb_connect();
+	$query = "SELECT Temperature.TemperatureID, Temperature.value AS temp_val, Solar_power.value AS solar_val From Temperature
+	INNER JOIN Solar_power ON Temperature.Solar_powerID=Solar_power.Solar_powerID
+	ORDER BY Temperature.TemperatureID DESC LIMIT 1
+	";
+
+	$result = $con->query($query);
+
+	if ($result->num_rows > 0) {
+	    // output data of each row
+	    while($row = $result->fetch_assoc()) {
+	        return $row;
+	    }
+	} else {
+	    echo "0 results";
+	}
+	$con->close();
+	}
+
 //ddb_insert_power_and_temp(1500,25);
 
 ?>

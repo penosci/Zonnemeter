@@ -5,7 +5,7 @@ String dataToSend;
 
 void setup() {
  
-  Serial.begin(115200);                 //Serial connection
+  Serial.begin(9600);                 //Serial connection
   WiFi.begin("steven-K73SV", "Mu4W8Of2");   //WiFi connection
  
   while (WiFi.status() != WL_CONNECTED) {  //Wait for the WiFI connection completion
@@ -30,7 +30,6 @@ void loop() {
 
 }
  if(dataToSend!=""){
-  dataToSend = strtok_r(dataToSend, ";", &dataToSend)
   send_to_server(dataToSend);
   dataToSend="";
   
@@ -44,7 +43,7 @@ void send_to_server(String data) {
    
      HTTPClient http;    //Declare object of class HTTPClient
    
-     http.begin("http://10.42.0.1:80/webserver/esp_update.php");      //Specify request destination
+     http.begin("http://10.42.0.21:80/webserver/esp_update.php");      //Specify request destination
      http.addHeader("Content-Type", "application/x-www-form-urlencoded");
      //http.writeToStream(&Serial);
    
