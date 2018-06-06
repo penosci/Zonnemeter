@@ -12,13 +12,11 @@ $(document).ready(function(){
     $(".site_content").load('php/week_graph.php');
 
   });
-  window.setInterval(reload_dash(current_page), 10000);
+  window.setInterval(function(){
+    $(".site_content").load('php/dashboard.php');
+    //console.log(current_page);
+    if(current_page = "dashboard") {
+      //console.log("dash reload");
+    }
+  }, 10000);
 });
-
-function reload_dash(current_page) {
-  $(".site_content").load('php/dashboard.php');
-  if(current_page = "dashboard") {
-    console.log("dash reload");
-  }
-
-}
