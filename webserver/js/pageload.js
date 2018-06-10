@@ -13,10 +13,9 @@ $(document).ready(function(){
 
   });
   window.setInterval(function(){
-    $(".site_content").load('php/dashboard.php');
-    //console.log(current_page);
-    if(current_page = "dashboard") {
-      //console.log("dash reload");
+    if(current_page == "dashboard") {
+      $(".site_content").load('php/dashboard.php');
+      console.log("dash reload");
     }
   }, 10000);
 });
