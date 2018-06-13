@@ -64,7 +64,7 @@ function ddb_select_last_records(){
 	}
 	$con->close();
 }
-function ddb_data_one_day(){
+function ddb_data_one_day_power(){
 	$con = ddb_connect();
 	$query = "SELECT Temperature.TemperatureID, Temperature.value AS temp_val, Solar_power.value AS solar_val, Temperature.dt_created AS date From Temperature
 	INNER JOIN Solar_power ON Temperature.Solar_powerID=Solar_power.Solar_powerID WHERE Temperature.dt_created >= NOW() - INTERVAL 1 DAY
@@ -74,7 +74,26 @@ function ddb_data_one_day(){
 	if ($result->num_rows > 0) {
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
-				$data[] = array(strftime($row['date']),intval($row['temp_val']),intval($row['solar_val']));
+				$solar_power = round(((intval($row['solar_val'])/4095)*5)/0.0034);
+				$data[] = array(strftime($row['date']),$solar_power);
+	    }
+	} else {
+	    echo "0 results";
+	}
+	return $data;
+	$con->close();
+}
+function ddb_data_one_day_temp(){
+	$con = ddb_connect();
+	$query = "SELECT Temperature.TemperatureID, Temperature.value AS temp_val, Solar_power.value AS solar_val, Temperature.dt_created AS date From Temperature
+	INNER JOIN Solar_power ON Temperature.Solar_powerID=Solar_power.Solar_powerID WHERE Temperature.dt_created >= NOW() - INTERVAL 1 DAY
+	";
+
+	$result = $con->query($query);
+	if ($result->num_rows > 0) {
+	    // output data of each row
+	    while($row = $result->fetch_assoc()) {
+				$data[] = array(strftime($row['date']),intval($row['temp_val']));
 	    }
 	} else {
 	    echo "0 results";
